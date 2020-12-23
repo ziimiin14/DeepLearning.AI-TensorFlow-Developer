@@ -1,5 +1,8 @@
 import numpy as np
 import tensorflow as tf
+import os
+
+train_horse_dir
 
 model = tf.keras.models.Sequential([tf.keras.layers.Conv2D(filters=16,kernel_size=(3,3),activation='relu',input_shape=(300,300,3)),
                                     tf.keras.layers.MaxPool2D(pool_size=(2,2)),
