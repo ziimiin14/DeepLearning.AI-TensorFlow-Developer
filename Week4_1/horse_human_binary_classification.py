@@ -1,15 +1,19 @@
 import numpy as np
 import tensorflow as tf
-import os
 
-train_horse_dir
 
-model = tf.keras.models.Sequential([tf.keras.layers.Conv2D(filters=16,kernel_size=(3,3),activation='relu',input_shape=(300,300,3)),
+
+
+model = tf.keras.models.Sequential([# First convolution
+                                    tf.keras.layers.Conv2D(filters=16,kernel_size=(3,3),activation='relu',input_shape=(300,300,3)),
                                     tf.keras.layers.MaxPool2D(pool_size=(2,2)),
+                                    # Second convolution
                                     tf.keras.layers.Conv2D(filters=32,kernel_size=(3,3),activation='relu'),
                                     tf.keras.layers.MaxPool2D(pool_size=(2,2)),
+                                    # Third convolution
                                     tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), activation='relu'),
                                     tf.keras.layers.MaxPool2D(pool_size=(2, 2)),
+                                    # Forth convolution
                                     tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), activation='relu'),
                                     tf.keras.layers.MaxPool2D(pool_size=(2, 2)),
                                     tf.keras.layers.Flatten(),
@@ -25,4 +29,4 @@ train_generator = train_datagen.flow_from_directory('data_set_1',target_size=(30
 
 history = model.fit(train_generator, steps_per_epoch=8,epochs=15)
 
-model.save('horse_human_model')
+model.save('horse_human_model.h5')
