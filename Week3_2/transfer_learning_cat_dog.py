@@ -7,12 +7,13 @@ pre_trained_model = tf.keras.applications.inception_v3.InceptionV3(input_shape=(
                                                                    weights=None)
 pre_trained_model.load_weights('inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5')
 
+# pre_trained_model.trainable=False
 for layer in pre_trained_model.layers:
     layer.trainable=False
 
-pre_trained_model.summary()
+# pre_trained_model.summary()
 
-last_layer = pre_trained_model.get_layer('mixed7')
+last_layer = pre_trained_model.get_layer('mixed10')
 last_output = last_layer.output
 print(last_output)
 
@@ -24,7 +25,7 @@ x = tf.keras.layers.Dense(1,activation='sigmoid')(x)
 print(pre_trained_model.input)
 model = tf.keras.Model(pre_trained_model.input,x)
 
-model.summary()
+# model.summary()
 
 model.compile(loss='binary_crossentropy',optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.001),
               metrics=['accuracy'])

@@ -106,7 +106,7 @@ model.compile(loss='sparse_categorical_crossentropy',optimizer='rmsprop',metrics
 
 
 # Train the Model
-history = model.fit_generator(train_gen,epochs=2,validation_data=val_gen)
+history = model.fit_generator(train_gen,epochs=2,validation_data=val_gen,ste)
 
 model.evaluate(testing_images, testing_labels, verbose=0)
 
